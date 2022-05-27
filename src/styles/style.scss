@@ -1,0 +1,246 @@
+@import "./Mixins.scss";
+@import "../font/stylesheet.css";
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "TT Commons";
+  background: #000;
+  font-weight: 400;
+  color: #fff;
+  @include fluid(font-size, 14px, 18px);
+}
+a {
+  text-decoration: none;
+}
+
+input:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+
+textarea:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.container {
+  @include container;
+}
+.header {
+  @include fluid(padding-top, 20px, 40px);
+  &__container {
+    @include container;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__logo {
+    background: url("../assets/logo.svg") no-repeat;
+    @include fluid(width, 160px, 200px);
+    @include fluid(height, 40px, 60px);
+    background-size: contain;
+  }
+  &__nav {
+    a {
+      color: #fff;
+      position: relative;
+      @include fluid(margin-left, 30px, 50px);
+      @include fluid(font-size, 18px, 24px);
+      font-weight: 500;
+
+      &::before {
+        content: "";
+        transition: 0.38s ease-in-out;
+        position: absolute;
+        left: 50%;
+        bottom: -10px;
+        background: #fff;
+        width: 0;
+        height: 3px;
+        opacity: 0;
+        border-radius: 1px;
+      }
+      &:hover {
+        &::before {
+          left: 0;
+          opacity: 1;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+.coin {
+  @include fluid(padding-top, 12px, 20px);
+  @include fluid(padding-bottom, 12px, 20px);
+  @include fluid(padding-left, 20px, 40px);
+  @include fluid(padding-right, 20px, 40px);
+  background: #1b1b1b;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  @include fluid(margin-bottom, 10px, 20px);
+  justify-content: space-between;
+  img {
+    @include fluid(margin-right, 30px, 60px);
+    @include fluid(width, 38px, 48px);
+    @include fluid(height, 38px, 48px);
+    object-fit: contain;
+    border-radius: 50%;
+  }
+  &__block {
+    flex-grow: 1;
+  }
+  &__name {
+    @include fluid(font-size, 16px, 18px);
+    color: #5a5a5a;
+    margin-bottom: 2px;
+  }
+  &__price {
+    @include fluid(font-size, 24px, 28px);
+  }
+  &__item {
+    @include fluid(font-size, 16px, 18px);
+    color: #9899a0;
+  }
+}
+.up {
+  font-weight: 600;
+  @include fluid(font-size, 20px, 24px);
+  color: #1be074;
+  position: relative;
+  &::before {
+    content: "";
+    background: url("../assets/icon/rise-true.svg") no-repeat;
+    background-size: contain;
+    width: 12px;
+    height: 6px;
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+.down {
+  font-weight: 600;
+  @include fluid(font-size, 20px, 24px);
+  color: #fe4546;
+  position: relative;
+  &::before {
+    content: "";
+    background: url("../assets/icon/rise-false.svg") no-repeat;
+    background-size: contain;
+    width: 12px;
+    height: 6px;
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+.description {
+  border-top: 1px solid #292929;
+  background: #121212;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  @include fluid(padding-top, 20px, 25px);
+  @include fluid(padding-bottom, 20px, 25px);
+  @include fluid(padding-left, 30px, 40px);
+  @include fluid(padding-right, 30px, 40px);
+  @include fluid(margin-bottom, 60px, 120px);
+  &__item {
+    display: flex;
+    align-items: flex-start;
+    @include fluid(margin-bottom, 10px, 15px);
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  &__price {
+    @include fluid(font-size, 30px, 36px);
+    @include fluid(margin-right, 20px, 40px);
+  }
+  &__name {
+    color: #5a5a5a;
+    @include fluid(font-size, 18px, 20px);
+    @include fluid(padding-left, 10px, 15px);
+    &:first-child {
+      padding-left: 0;
+      @include fluid(padding-right, 10px, 15px);
+      border-right: 1px solid #292929;
+    }
+  }
+  &__icons {
+    display: flex;
+    align-items: center;
+  }
+  &__icon {
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #292929;
+    border-radius: 50%;
+    @include fluid(margin-left, 10px, 15px);
+    transition: 0.38s ease-in-out;
+    &:first-child {
+      margin-left: 0;
+    }
+    img {
+      width: 28px;
+      height: 28px;
+      transition: 0.38s ease-in-out;
+    }
+    &:hover {
+      box-shadow: 0px 0px 24px rgba(255, 255, 255, 0.6);
+    }
+  }
+}
+.portfolio {
+  display: flex;
+  align-items: center;
+  @include fluid(padding-bottom, 20px, 40px);
+  justify-content: space-between;
+  &__icon {
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #292929;
+    border-radius: 50%;
+    transition: 0.38s ease-in-out;
+    img {
+      width: 28px;
+      height: 28px;
+      transition: 0.38s ease-in-out;
+    }
+    &:hover {
+      box-shadow: 0px 0px 24px rgba(255, 255, 255, 0.6);
+    }
+  }
+  &__item {
+    display: flex;
+    align-items: flex-start;
+  }
+  &__price {
+    @include fluid(font-size, 36px, 42px);
+    @include fluid(margin-right, 20px, 40px);
+  }
+  &__name {
+    color: #9899a0;
+    margin-bottom: 10px;
+    @include fluid(font-size, 20px, 24px);
+  }
+}
